@@ -7,8 +7,10 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
-import axiosInstance from "@/services/axiosInstance";
 import { Loader2 } from "lucide-react";
+import { toast } from "sonner";
+
+import axiosInstance from "@/services/axiosInstance";
 
 // Define the validation schema
 const registerSchema = z.object({
@@ -44,11 +46,21 @@ export function RegisterForm({
       return response.data;
     },
     onSuccess: (data) => {
+      toast.success("Successfully", {
+        description: data.message,
+        position: "top-right",
+        duration: 5000,
+        richColors: true,
+      });
       navigate({ to: "/auth/login", replace: true });
     },
     onError: (error) => {
-      // Handle error (e.g., show toast notification)
-      console.error(error);
+      toast.error("An error occurred", {
+        description: error.message,
+        position: "top-right",
+        duration: 5000,
+        richColors: true,
+      });
     },
   });
 
