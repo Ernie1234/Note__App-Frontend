@@ -38,6 +38,14 @@ function RootComponent() {
           About
         </Link>
         <Link
+          to="/notes"
+          activeProps={{
+            className: "font-bold",
+          }}
+        >
+          Notes
+        </Link>
+        <Link
           to="/auth/login"
           activeProps={{
             className: "font-bold",
