@@ -1,6 +1,6 @@
 import axiosInstance from "./axiosInstance";
 
-interface Post {
+export interface INote {
   userId: string;
   id: string;
   title: string;
@@ -10,12 +10,12 @@ interface Post {
 }
 
 interface NotesResponse {
-  data: Post[];
+  data: INote[];
   message: string;
   success: boolean;
 }
 
-export const getAllNotes = async (): Promise<Post[]> => {
+export const getAllNotes = async (): Promise<INote[]> => {
   const response = await axiosInstance.get<NotesResponse>("/notes");
   return response.data.data;
 };

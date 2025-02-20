@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { queryOptions, useQuery } from "@tanstack/react-query";
+
 import { getAllNotes } from "@/services/note";
+import NoteCard from "@/components/notes/NoteCard";
 
 const notesQueryOptions = queryOptions({
   queryKey: ["getNotes"],
@@ -32,13 +34,13 @@ function NotesComponent() {
   console.log(notes);
 
   return (
-    <div>
+    <div className="h-full min-h-dvh">
       <h1>Notes</h1>
-      <ul>
+      <div className="flex flex-wrap items-center gap-4 p-5">
         {notes.map((note) => (
-          <li key={note.id}>{note.title}</li>
+          <NoteCard key={note.id} note={note} />
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
