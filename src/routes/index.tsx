@@ -6,18 +6,16 @@ import axiosInstance from "../services/axiosInstance";
 // Define the Post type
 interface Post {
   userId: number;
-  id: number;
-  title: string;
-  body: string;
+  id: string;
 }
 
 const fetchPosts = async (): Promise<Post[]> => {
-  const response = await axiosInstance.get<Post[]>("/posts");
+  const response = await axiosInstance.get<Post[]>("/auth");
   return response.data.slice(0, 10);
 };
 
 const postsQueryOptions = queryOptions({
-  queryKey: ["posts"],
+  queryKey: ["user"],
   queryFn: () => fetchPosts(),
 });
 
@@ -44,17 +42,11 @@ function HomeComponent() {
     return <div>No posts available.</div>; // Handle empty or undefined posts
   }
 
+  console.log(posts);
+
   return (
     <div className="p-2">
       <h3>Welcome Home!</h3>
-      <ul>
-        {posts?.map((post) => (
-          <li key={post.id} className="p-3 border-y">
-            <h4>{post.title}</h4>
-            <p>{post.body}</p>
-          </li>
-        ))}
-      </ul>
     </div>
   );
 }
