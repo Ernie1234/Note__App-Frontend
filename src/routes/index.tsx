@@ -11,7 +11,7 @@ interface Post {
 
 const fetchPosts = async (): Promise<Post[]> => {
   const response = await axiosInstance.get<Post[]>("/auth");
-  return response.data.slice(0, 10);
+  return response.data;
 };
 
 const postsQueryOptions = queryOptions({
