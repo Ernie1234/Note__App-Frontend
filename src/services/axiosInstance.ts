@@ -1,7 +1,8 @@
 import axios, { AxiosInstance } from "axios";
 
 const axiosInstance: AxiosInstance = axios.create({
-  baseURL: "https://jsonplaceholder.typicode.com", // Base URL for your API
+  baseURL: "https://jsonplaceholder.typicode.com",
+  withCredentials: true,
 });
 
 // Intercept requests to add the Bearer token
