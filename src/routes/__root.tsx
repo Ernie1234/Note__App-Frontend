@@ -16,7 +16,7 @@ export const Route = createRootRouteWithContext<{
 
 function RootComponent() {
   return (
-    <main className="dark:text-gray-100 bg-gray-50 text-gray-950 dark:bg-gray-900">
+    <main className="bg-gray-50 text-gray-950 sticky top-0">
       <div className="p-2 flex gap-2 text-lg">
         <Link
           to="/"
@@ -35,8 +35,17 @@ function RootComponent() {
         >
           About
         </Link>
+        <Link
+          to="/auth/login"
+          activeProps={{
+            className: "font-bold",
+          }}
+        >
+          Login
+        </Link>
       </div>
       <hr />
+
       <Outlet />
       <ReactQueryDevtools buttonPosition="top-right" />
       <TanStackRouterDevtools position="bottom-right" />
