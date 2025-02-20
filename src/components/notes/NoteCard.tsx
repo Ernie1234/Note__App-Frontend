@@ -39,8 +39,8 @@ function NoteCard({ note }: Props) {
       <CardFooter className="flex justify-between items-center gap-8">
         <p>{formatDate(updatedAtString)}</p>{" "}
         {/* Use the updatedAtString for formatting */}
-        <div className="bg-gray-900 p-3 rounded-full">
-          <Pencil className="text-white" size={16} />
+        <div className="bg-gray-900 p-2.5 rounded-full">
+          <Pencil className="text-white" size={14} />
         </div>
       </CardFooter>
     </Card>
